@@ -1,6 +1,6 @@
 #' Returns genes used in Marker Gene Profile and BRETIGEA method
 #'
-#' A function that returns the genes used in the markerGenProfile estimation method
+#' A function that returns the genes used in the markerGeneProfile estimation method
 #' and the BRETIGEA method
 #'
 #' @param count_df A dataframe with Gene rows and Subject columns.
@@ -11,7 +11,7 @@
 #' marker genes as there are for cell types
 #'
 #' @return Returns a nested list with mgp_markers and bret_markers which are each
-#'
+#' lists of markers used for each method
 #'
 #' @examples
 #' # Examples 1:

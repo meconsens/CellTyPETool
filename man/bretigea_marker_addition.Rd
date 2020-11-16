@@ -10,7 +10,7 @@ proportion estimate.}
 bretigea_marker_addition(
   count_df,
   bret_cell_markers,
-  cell,
+  cell_name,
   metadata,
   covar,
   pathology_name,
@@ -25,7 +25,7 @@ bretigea_marker_addition(
 markers are genes for cell types and cell indicates the cell type markers
 are the gene for.}
 
-\item{cell}{A string indicating which of the cells in the cell type marker list
+\item{cell_name}{A string indicating which of the cells in the cell type marker list
 is being specified to look at.}
 
 \item{metadata}{A dataframe with subjects also in count_df and rows
@@ -64,7 +64,7 @@ proportion estimate.
 bretigea_marker_addition <- bretigea_marker_addition (
                           count_df = count_df,
                           bret_cell_markers = bret_cell_markers,
-                          cell = "mic",
+                          cell_name = "mic",
                           metadata = metadata,
                           covar = "Covariate",
                           pathology_name = "DiseasePhenotypeScore",

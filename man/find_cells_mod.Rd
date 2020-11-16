@@ -25,8 +25,8 @@ for each cell type.}
 marker gene prior to using it as an input for dimension reduction.}
 }
 \value{
-Returns a  list of sample-by-cell type matrix of estimate cell
-type proportionvariables and the markers used
+Returns a list of sample-by-cell type matrix of estimated cell
+type proportion variables and the markers used
 }
 \description{
 A function that runs BRETIGEA findCells() but returns the used markers

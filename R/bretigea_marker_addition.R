@@ -87,7 +87,7 @@ markers_pathology <-function(markerMat, metadata, covar, pathology_name, cell_ty
 #' @param bret_cell_markers A dataframe with two columns, markers and cell where
 #'  markers are genes for cell types and cell indicates the cell type markers
 #'  are the gene for.
-#' @param cell A string indicating which of the cells in the cell type marker list
+#' @param cell_name A string indicating which of the cells in the cell type marker list
 #' is being specified to look at.
 #' @param covar A covariate to be taken into account when running linear models
 #' to check the association between the cell type indicated by cell and the
@@ -114,7 +114,7 @@ markers_pathology <-function(markerMat, metadata, covar, pathology_name, cell_ty
 #' bretigea_marker_addition <- bretigea_marker_addition (
 #'                           count_df = count_df,
 #'                           bret_cell_markers = bret_cell_markers,
-#'                           cell = "mic",
+#'                           cell_name = "mic",
 #'                           metadata = metadata,
 #'                           covar = "Covariate",
 #'                           pathology_name = "DiseasePhenotypeScore",
@@ -152,11 +152,11 @@ markers_pathology <-function(markerMat, metadata, covar, pathology_name, cell_ty
 #' @import ggrepel
 #' @importFrom magrittr %>%
 
-bretigea_marker_addition <- function(count_df, bret_cell_markers, cell, metadata, covar, pathology_name, cell_type_names, n){
+bretigea_marker_addition <- function(count_df, bret_cell_markers, cell_name, metadata, covar, pathology_name, cell_type_names, n){
   if(!all(c("markers", "cell") %in% colnames(bret_cell_markers))){
     stop("The bret_cell_markers argument must be a df with a column named marker s(gene symbols) and a column named cell (corresponding cell types).")
   }
-  if(!cell %in% cell_type_names) stop("The cell argument must specify a cell in cell_type_names.")
+  if(!cell_name %in% cell_type_names) stop("The cell_name argument must specify a cell in cell_type_names.")
 
   if(!covar %in% colnames(metadata)) stop("The covar argument must have a corresponding column in metadata.")
 
@@ -189,9 +189,9 @@ bretigea_marker_addition <- function(count_df, bret_cell_markers, cell, metadata
       results_final <- results
     }
   }
-  cell_pathology <- results_final %>% dplyr::filter(celltype == cell)
+  cell_pathology <- results_final %>% dplyr::filter(celltype == cell_name)
   cell_pathology <- cell_pathology %>% tidyr::gather(key, value, pathology)
-  cell_label<- bretigeaMarkers$marker_list%>% dplyr::filter(cell == cell)
+  cell_label<- bretigeaMarkers$marker_list%>% dplyr::filter(cell == cell_name)
   cell_label <- utils::head(cell_label,n)
   cell_pathology$markers <- cell_label$markers
   graph <- cell_pathology %>%
@@ -201,7 +201,7 @@ bretigea_marker_addition <- function(count_df, bret_cell_markers, cell, metadata
       hjust = 0.5, vjust = 0.5)) +
     ggplot2::theme(axis.text.y = ggplot2::element_text(
       colour = 'black', size = 13,
-      hjust = 0.5, vjust = 0.5)) + ggplot2::ggtitle(paste0("Significance of ", cell,  " Cell Type Proportion Association to ", pathology_name, " Upon Marker Addition"))
+      hjust = 0.5, vjust = 0.5)) + ggplot2::ggtitle(paste0("Significance of ", cell_name,  " Cell Type Proportion Association to ", pathology_name, " Upon Marker Addition"))
   return(graph)
 }
 

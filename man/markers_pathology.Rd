@@ -29,7 +29,7 @@ being examined.}
 there are markers in bret_cell_markers: unique(bret_cell_markers$cell)}
 }
 \value{
-Returns a matrix array ready to be formatted by
+Returns a matrix array ready to be formatted by bretigea_markers_addition
 }
 \description{
 A function that runs a linear model on the cell-type

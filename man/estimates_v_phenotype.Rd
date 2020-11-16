@@ -2,8 +2,7 @@
 % Please edit documentation in R/estimates_v_phenotype.R
 \name{estimates_v_phenotype}
 \alias{estimates_v_phenotype}
-\title{Calculates and compares the estimations of cell types derived by the
-markerGeneProfile and BRETIGEA findCells method}
+\title{Displays strength of association between pathologies and cell types}
 \usage{
 estimates_v_phenotype(
   estimates,
@@ -33,13 +32,12 @@ for which the association between it and the cell type indicated by cell is
 being examined.}
 }
 \value{
-Returns a volcano plot showing the significance of assocations between
+Returns a volcano plot showing the significance of associations between
 each cell type proportion derived and the pathology in question
 }
 \description{
-A function that calculates cell type proportions using two validated methods,
-markerGeneProfile and findCells, and then compares the cell type proportions
-calculated by each
+A function that generates a volcano plot showing the significance of associations between
+each cell type proportion derived and the pathology in question
 }
 \examples{
 # Examples 1:
