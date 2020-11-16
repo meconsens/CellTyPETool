@@ -3,11 +3,11 @@
 \docType{data}
 \name{metadata}
 \alias{metadata}
-\title{Metadata for subjects corresponding to count_df subjects}
+\title{Metadata for subjects corresponding to countDf subjects}
 \format{
-A dataframe with 345 subjects also in count_df and 3 rows indicating the subjects id (Sample), some covariate (covariate) and disease state score (DiseasePhenotypeScore)
+A dataframe with 345 subjects also in countDf and 3 rows indicating the subjects id (Sample), some covariate (covariate) and disease state score (DiseasePhenotypeScore)
 \describe{
-\item{Sample}{The subjects id which corresponds to count_df}
+\item{Sample}{The subjects id which corresponds to countDf}
 \item{Covariate}{Some confounding factor that must be accounted for when finding signals between cell-type proportions and a disease phenotype (could be batch etc.)}
 \item{DiseasePhenotypeScore}{Some indication of disease state, could be a score of combined AD pathology variables (CERAD score, Braak pathology stage etc.)}
 }

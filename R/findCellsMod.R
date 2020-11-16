@@ -20,18 +20,18 @@
 #'
 #' @examples
 #' # Examples 1:
-#' # Using bret_cell_markers, metadata datasets available with package
+#' # Using bretCellMarkers, metadata datasets available with package
 #'
-#' rownames(count_df) <- count_df$Gene
-#' count_df <- count_df[,-1]
-#' find_cells_mod <- find_cells_mod(
-#'                inputMat = count_df,
-#'                markers = bret_cell_markers,
+#' rownames(countDf) <- countDf$Gene
+#' countDf <- countDf[,-1]
+#' findCellsMod <- findCellsMod(
+#'                inputMat = countDf,
+#'                markers = bretCellMarkers,
 #'                nMarker = 10,
 #'                method = "SVD",
 #'                scale = TRUE)
-#' find_cells_mod$marker_list
-#' find_cells_mod$SPVS
+#' findCellsMod$markerList
+#' findCellsMod$SPVS
 #'
 #' @references
 #' #' Chikina M, Zaslavsky E, Sealfon SC. CellCODE: a robust latent variable approach to differential expression analysis for heterogeneous cell populations. \emph{Bioinformatics}
@@ -45,7 +45,7 @@
 #' URL https://www.R-project.org/.
 #' @export
 #' @importFrom stats cor prcomp
-find_cells_mod <- function(inputMat, markers, nMarker, method, scale){
+findCellsMod <- function(inputMat, markers, nMarker, method, scale){
   if(!all(c("markers", "cell") %in% colnames(markers))){
     stop("The markers argument must be a df with a column named marker s(gene symbols) and a column named cell (corresponding cell types).")
   }
@@ -112,6 +112,7 @@ find_cells_mod <- function(inputMat, markers, nMarker, method, scale){
   colnames(SPVs) = cell_types
   rownames(SPVs) = colnames(inputMat)
 
-  markersandcells <- list("marker_list" = markers_df, "SPVS" = SPVs)
+  #modified here by me to return markerList
+  markersandcells <- list("markerList" = markers_df, "SPVS" = SPVs)
   return(markersandcells)
 }
