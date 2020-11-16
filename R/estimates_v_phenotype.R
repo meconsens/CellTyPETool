@@ -1,9 +1,7 @@
-#' Calculates and compares the estimations of cell types derived by the
-#' markerGeneProfile and BRETIGEA findCells method
+#' Displays strength of association between pathologies and cell types
 #'
-#' A function that calculates cell type proportions using two validated methods,
-#' markerGeneProfile and findCells, and then compares the cell type proportions
-#' calculated by each
+#' A function that generates a volcano plot showing the significance of associations between
+#' each cell type proportion derived and the pathology in question
 #'
 #' @param estimates The estimates of cell type proportions returned by calc_and_compare()
 #' either markerGeneProfile derived or BRETIGEA derived
@@ -19,7 +17,7 @@
 #' for which the association between it and the cell type indicated by cell is
 #' being examined.
 #'
-#' @return Returns a volcano plot showing the significance of assocations between
+#' @return Returns a volcano plot showing the significance of associations between
 #' each cell type proportion derived and the pathology in question
 #'
 #' @examples

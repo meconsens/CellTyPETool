@@ -15,8 +15,8 @@
 #' @param scale Whether or not to scale the gene expression data from each
 #' marker gene prior to using it as an input for dimension reduction.
 #'
-#' @return Returns a  list of sample-by-cell type matrix of estimate cell
-#' type proportionvariables and the markers used
+#' @return Returns a list of sample-by-cell type matrix of estimated cell
+#' type proportion variables and the markers used
 #'
 #' @examples
 #' # Examples 1:

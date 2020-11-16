@@ -20,7 +20,7 @@
 #' @param cell_type_names The names of all the unique cell types for which
 #' there are markers in bret_cell_markers: unique(bret_cell_markers$cell)
 #'
-#' @return Returns a matrix array ready to be formatted by
+#' @return Returns a matrix array ready to be formatted by bretigea_markers_addition
 #'
 #' @examples
 #' # Examples 1:
