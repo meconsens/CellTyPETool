@@ -1,7 +1,7 @@
 ---
 title: "A tour of CellTyPETool"
 output: rmarkdown::html_vignette
-author: "Anjali Silva"
+author: "Micaela Consens"
 date: "`r format(Sys.time(), '%d %b %Y')`"
 vignette: >
   %\VignetteIndexEntry{A tour of CellTyPETool}
@@ -103,13 +103,13 @@ The **genesUsed** function returns the list of marker genes used in the cell typ
 <br>
 
 This will output various plots 
-<div style="text-align:center"><img src="bretigeaMarkerAddition" alt="LinePlot_16Nov2020" width="450"/>
+<div style="text-align:center"><img src="bretigeaMarkerAddition.PNG" alt="LinePlot_16Nov2020" width="450"/>
 <div style="text-align:left">
 
-<div style="text-align:center"><img src="corrPlot" alt="CorrPlot_16Nov2020" width="450"/>
+<div style="text-align:center"><img src="corrPlot.PNG" alt="CorrPlot_16Nov2020" width="450"/>
 <div style="text-align:left">
 
-<div style="text-align:center"><img src="estimatesVPathBret" alt="VolcanoPlot_16Nov2020" width="450"/>
+<div style="text-align:center"><img src="estimatesVPathBret.PNG" alt="VolcanoPlot_16Nov2020" width="450"/>
 <div style="text-align:left">
 
 
