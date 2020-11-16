@@ -1,0 +1,19 @@
+---
+title: "IntroductionCellTyPETool"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{IntroductionCellTyPETool}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(CellTyPETool)
+```

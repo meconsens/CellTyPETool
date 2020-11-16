@@ -35,6 +35,12 @@ devtools::install_github("meconsens/CellTyPETool", build_vignettes = TRUE)
 library("CellTyPETool")
 ```
 
+##Overview
+```r
+ls("package:CellTyPETool")
+```
+CellTyPETool contains 4 functions.
+
 ## Example
 
 This is a basic example which shows you how to solve a common problem:
@@ -46,7 +52,7 @@ library(CellTyPETool)
 
 
 ##Acknowledgements
-This package was developed as part of an assessment for 2020BCB410H: Applied Bioinformatics, University of Toronto, Toronto,CANADA.
+This package was developed as part of an assessment for 2020 BCB410H: Applied Bioinformatics, University of Toronto, Toronto,CANADA.
 
 
 ```{r pressure, echo = FALSE}

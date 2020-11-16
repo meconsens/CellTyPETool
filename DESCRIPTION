@@ -16,7 +16,19 @@ Imports:
     reshape2,
     pheatmap,
     tidyr,
-    dplyr
+    dplyr,
+    magrittr,
+    ggplot2,
+    scales,
+    tibble,
+    ggrepel,
+    reshape,
+    plm
 RoxygenNote: 7.1.1
 Depends: 
     R (>= 2.10)
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat
+VignetteBuilder: knitr

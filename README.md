@@ -29,17 +29,35 @@ devtools::install_github("meconsens/CellTyPETool", build_vignettes = TRUE)
 library("CellTyPETool")
 ```
 
+\#\#Overview
+
+``` r
+ls("package:CellTyPETool")
+```
+
+CellTyPETool contains 4 functions.
+
 ## Example
 
 This is a basic example which shows you how to solve a common problem:
 
 ``` r
 library(CellTyPETool)
+#> Warning: replacing previous import 'dplyr::rename' by 'reshape::rename' when
+#> loading 'CellTyPETool'
+#> Warning: replacing previous import 'dplyr::filter' by 'stats::filter' when
+#> loading 'CellTyPETool'
+#> Warning: replacing previous import 'dplyr::lag' by 'stats::lag' when loading
+#> 'CellTyPETool'
+#> Warning: replacing previous import 'reshape::expand' by 'tidyr::expand' when
+#> loading 'CellTyPETool'
+#> Warning: replacing previous import 'magrittr::extract' by 'tidyr::extract' when
+#> loading 'CellTyPETool'
 ## basic example code
 ```
 
 \#\#Acknowledgements This package was developed as part of an assessment
-for 2020BCB410H: Applied Bioinformatics, University of Toronto,
+for 2020 BCB410H: Applied Bioinformatics, University of Toronto,
 Toronto,CANADA.
 
 <img src="man/figures/README-pressure-1.png" width="100%" />
