@@ -22,7 +22,7 @@ BRETIGEA
 mgp_cell_markers
 }
 \description{
-Marker Genes from the BRETIGEA packaged reformated for use in the Marker Gene Profile method
+Marker Genes from the BRETIGEA package reformatted for use in the Marker Gene Profile method
 }
 \examples{
 \dontrun{
