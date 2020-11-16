@@ -23,8 +23,11 @@ cell-type proportion calculation.
 
 To install the latest version of the package:
 
-require(“devtools”) devtools::install\_github(“meconsens/CellTyPETool”,
-build\_vignettes = TRUE) library(“CellTyPETool”)
+``` r
+require("devtools")
+devtools::install_github("meconsens/CellTyPETool", build_vignettes = TRUE)
+library("CellTyPETool")
+```
 
 ## Example
 
