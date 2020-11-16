@@ -99,10 +99,10 @@ calcAndCompare <-function(countDf, mgpCellMarkers, bretCellMarkers){
   cormat <- round(stats::cor(markerMat),2)
   meltedCormat <- reshape::melt(cormat)
   names(meltedCormat)[3] <- "correlation"
-  corrPlot <- ggplot2::ggplot(data = meltedCormat, ggplot2::aes(x=Var1, y=Var2, fill=correlation)) +
+  corrPlot <- ggplot2::ggplot(data = meltedCormat, ggplot2::aes(x=X1, y=X2, fill=correlation)) +
     ggplot2::geom_tile() + ggplot2::theme(axis.title.y=element_blank(),
                                           axis.title.x=element_blank(),
-                                          axis.text.x = element_text(angle = 45, hjust = 1)) + ggplot2::geom_text(data=meltedCormat,aes(x=Var1, y=Var2,label=correlation)) +  ggplot2::scale_fill_gradient2(low="darkblue", high="darkgreen", guide="colorbar")
+                                          axis.text.x = element_text(angle = 45, hjust = 1)) + ggplot2::geom_text(data=meltedCormat,aes(x=X1, y=X2,label=correlation)) +  ggplot2::scale_fill_gradient2(low="darkblue", high="darkgreen", guide="colorbar")
 
   return(list("mgp" = mgpFinal, "bret" = bretFinal, "corrPlot"= corrPlot))
 }
