@@ -46,14 +46,19 @@
 #' @references
 #' Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) \emph{The New S Language}. Wadsworth & Brooks/Cole.
 #'
-#'Chambers, J. M. and Hastie, T. J. (1992) \emph{Statistical Models in S}, Wadsworth & Brooks/Cole.
+#' Chambers, J. M. and Hastie, T. J. (1992) \emph{Statistical Models in S}, Wadsworth & Brooks/Cole.
 #'
-#'Wilkinson, G. N. and Rogers, C. E. (1973). Symbolic descriptions of factorial models for analysis of variance. \emph{Applied Statistics}, 22, 392–399. doi: 10.2307/2346786.
+#' Wilkinson, G. N. and Rogers, C. E. (1973). Symbolic descriptions of factorial models for analysis of variance. \emph{Applied Statistics}, 22, 392–399. doi: 10.2307/2346786.
 #'
-#'@export
-#'@import stats
-#'@importFrom magrittr %>%
+#' @export
+#' @importFrom stats anova coef lm as.formula
+#' @importFrom magrittr %>%
 markers_pathology <-function(markerMat, metadata, covar, pathology_name, cell_type_names){
+
+  if(!covar %in% colnames(metadata)) stop("The covar argument must have a corresponding column in metadata.")
+
+  if(!pathology_name %in% colnames(metadata)) stop("The pathology_name argument must have a corresponding column in metadata.")
+
   markers_meta <- merge(markerMat, metadata, by="Sample")
   model.data <- markers_meta
   results <- sapply(cell_type_names,function(celltype) {
@@ -71,7 +76,6 @@ markers_pathology <-function(markerMat, metadata, covar, pathology_name, cell_ty
 
 
 #' Runs BRETIGEA using top 1, top 1 & 2, top 1,2,3 ... to top 1...n markers
-#'
 #' A function that reruns the BRETIGEA findCells method (modified) on a loop to see
 #' the influence of different combinations of markers in determining the cell-type
 #' proportion estimate.
@@ -115,29 +119,42 @@ markers_pathology <-function(markerMat, metadata, covar, pathology_name, cell_ty
 #'                           n= 10)
 #'
 #' @references
-#'Mancarci, B. O., Toker, L., Tripathy, S. J., Li, B., Rocco, B., Sibille, E., & Pavlidis, P. (2017).
-#'CrossLaboratory Analysis of Brain Cell Type Transcriptomes with Applications to Interpretation of Bulk
-#'Tissue Data. \emph{eNeuro}, 4(6), ENEURO.0212-17.2017. \href{https://doi.org/10.1523/ENEURO.0212-17.201}
+#' Mancarci, B. O., Toker, L., Tripathy, S. J., Li, B., Rocco, B., Sibille, E., & Pavlidis, P. (2017).
+#' CrossLaboratory Analysis of Brain Cell Type Transcriptomes with Applications to Interpretation of Bulk
+#' Tissue Data. \emph{eNeuro}, 4(6), ENEURO.0212-17.2017. https://doi.org/10.1523/ENEURO.0212-17.201
 #'
-#'Stefan Milton Bache and Hadley Wickham (2014). magrittr: A Forward-Pipe Operator for R.
-#'\emph{R package version 1.5}. \href{https://CRAN.R-project.org/package=magrittr}
+#' Stefan Milton Bache and Hadley Wickham (2014). magrittr: A Forward-Pipe Operator for R.
+#' \emph{R package version 1.5}.https://CRAN.R-project.org/package=magrittr
 #'
-#'Wickham et al., (2019). Welcome to the tidyverse.\emph{ Journal of Open Source Software}, 4(43), 1686,
-#'https://doi.org/10.21105/joss.01686
+#' Wickham et al., (2019). Welcome to the tidyverse.\emph{ Journal of Open Source Software}, 4(43), 1686,
+#' https://doi.org/10.21105/joss.01686
 #'
 #' @export
-#' @import tidyr
-#' @import dplyr
-#' @import magrittr
+#' @importFrom tidyr gather
+#' @importFrom dplyr filter
 #' @import tibble
 #' @import scales
-#' @import stats
+#' @importFrom stats p.adjust
 #' @import utils
 #' @import ggplot2
 #' @import ggrepel
 #' @importFrom magrittr %>%
 
 bretigea_marker_addition <- function(count_df, bret_cell_markers, cell, metadata, covar, pathology_name, cell_type_names, n){
+  if(!all(c("markers", "cell") %in% colnames(bret_cell_markers))){
+    stop("The bret_cell_markers argument must be a df with a column named marker s(gene symbols) and a column named cell (corresponding cell types).")
+  }
+  if(!cell %in% cell_type_names) stop("The cell argument must specify a cell in cell_type_names.")
+
+  if(!covar %in% colnames(metadata)) stop("The covar argument must have a corresponding column in metadata.")
+
+  if(!pathology_name %in% colnames(metadata)) stop("The pathology_name argument must have a corresponding column in metadata.")
+
+  if(n > 1000) {
+    warning("n is too large", call. = FALSE)
+    n<- 1000 # correct the input for user
+  }
+
   rownames(count_df) <- count_df$Gene
   count_df <- count_df[,-1]
   for (i in 1: n)

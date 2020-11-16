@@ -26,26 +26,35 @@
 #'                 bret_cell_markers = bret_cell_markers)
 #'
 #' @references
-#'Mancarci, B. O., Toker, L., Tripathy, S. J., Li, B., Rocco, B., Sibille, E., & Pavlidis, P. (2017).
-#'CrossLaboratory Analysis of Brain Cell Type Transcriptomes with Applications to Interpretation of Bulk
-#'Tissue Data. \emph{eNeuro}, 4(6), ENEURO.0212-17.2017. \href{https://doi.org/10.1523/ENEURO.0212-17.201}
+#' Mancarci, B. O., Toker, L., Tripathy, S. J., Li, B., Rocco, B., Sibille, E., & Pavlidis, P. (2017).
+#' CrossLaboratory Analysis of Brain Cell Type Transcriptomes with Applications to Interpretation of Bulk
+#' Tissue Data. \emph{eNeuro}, 4(6), ENEURO.0212-17.2017. https://doi.org/10.1523/ENEURO.0212-17.201
 #'
-#'McKenzie, A.T., Wang, M., Hauberg, M.E. et al. Brain Cell Type Specific Gene Expression and Coexpression Network Architectures.
-#'\emph{Sci Rep} 8, 8868 (2018). https://doi.org/10.1038/s41598-018-27293-5
+#' McKenzie, A.T., Wang, M., Hauberg, M.E. et al. Brain Cell Type Specific Gene Expression and Coexpression Network Architectures.
+#' \emph{Sci Rep} 8, 8868 (2018). https://doi.org/10.1038/s41598-018-27293-5
 #'
-#'#'Wickham et al., (2019). Welcome to the tidyverse.\emph{ Journal of Open Source Software}, 4(43), 1686,
-#'https://doi.org/10.21105/joss.01686
+#' Wickham et al., (2019). Welcome to the tidyverse.\emph{ Journal of Open Source Software}, 4(43), 1686,
+#' https://doi.org/10.21105/joss.01686
 #'
 #' @export
 #' @import markerGeneProfile
 #' @import BRETIGEA
 #' @import tibble
-#' @import dplyr
-#' @import stats
-#' @import reshape
+#' @importFrom dplyr rename
+#' @importFrom stats cor
+#' @importFrom reshape melt
 #' @import ggplot2
 #' @importFrom magrittr %>%
 calc_and_compare <-function(count_df, mgp_cell_markers, bret_cell_markers){
+
+  if(!all(c("Gene") %in% colnames(count_df))){
+    stop("The count_df argument must be a df with a column named Gene (gene symbols)")
+  }
+
+  if(!all(c("markers", "cell") %in% colnames(bret_cell_markers))){
+    stop("The bret_cell_markers argument must be a df with a column named markers(gene symbols) and a column named cell (corresponding cell types).")
+  }
+
   mgp_estimations<- markerGeneProfile::mgpEstimate(exprData=count_df,
                                                    genes=mgp_cell_markers,
                                                    geneColName="Gene",

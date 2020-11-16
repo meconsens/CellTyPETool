@@ -2,7 +2,10 @@
 % Please edit documentation in R/bretigea_marker_addition.R
 \name{bretigea_marker_addition}
 \alias{bretigea_marker_addition}
-\title{Runs BRETIGEA using top 1, top 1 & 2, top 1,2,3 ... to top 1...n markers}
+\title{Runs BRETIGEA using top 1, top 1 & 2, top 1,2,3 ... to top 1...n markers
+A function that reruns the BRETIGEA findCells method (modified) on a loop to see
+the influence of different combinations of markers in determining the cell-type
+proportion estimate.}
 \usage{
 bretigea_marker_addition(
   count_df,
@@ -49,6 +52,7 @@ specified's association to the pathology indicated upon marker addition
 from 0 to n
 }
 \description{
+Runs BRETIGEA using top 1, top 1 & 2, top 1,2,3 ... to top 1...n markers
 A function that reruns the BRETIGEA findCells method (modified) on a loop to see
 the influence of different combinations of markers in determining the cell-type
 proportion estimate.
@@ -71,10 +75,10 @@ bretigea_marker_addition <- bretigea_marker_addition (
 \references{
 Mancarci, B. O., Toker, L., Tripathy, S. J., Li, B., Rocco, B., Sibille, E., & Pavlidis, P. (2017).
 CrossLaboratory Analysis of Brain Cell Type Transcriptomes with Applications to Interpretation of Bulk
-Tissue Data. \emph{eNeuro}, 4(6), ENEURO.0212-17.2017. \href{https://doi.org/10.1523/ENEURO.0212-17.201}
+Tissue Data. \emph{eNeuro}, 4(6), ENEURO.0212-17.2017. https://doi.org/10.1523/ENEURO.0212-17.201
 
 Stefan Milton Bache and Hadley Wickham (2014). magrittr: A Forward-Pipe Operator for R.
-\emph{R package version 1.5}. \href{https://CRAN.R-project.org/package=magrittr}
+\emph{R package version 1.5}.https://CRAN.R-project.org/package=magrittr
 
 Wickham et al., (2019). Welcome to the tidyverse.\emph{ Journal of Open Source Software}, 4(43), 1686,
 https://doi.org/10.21105/joss.01686

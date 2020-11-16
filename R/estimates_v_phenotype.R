@@ -39,21 +39,27 @@
 #'                 pathology = "DiseasePhenotypeScore")
 #'
 #' @references
-#'Mancarci, B. O., Toker, L., Tripathy, S. J., Li, B., Rocco, B., Sibille, E., & Pavlidis, P. (2017).
-#'CrossLaboratory Analysis of Brain Cell Type Transcriptomes with Applications to Interpretation of Bulk
-#'Tissue Data. \emph{eNeuro}, 4(6), ENEURO.0212-17.2017. \href{https://doi.org/10.1523/ENEURO.0212-17.201}
+#' Mancarci, B. O., Toker, L., Tripathy, S. J., Li, B., Rocco, B., Sibille, E., & Pavlidis, P. (2017).
+#' CrossLaboratory Analysis of Brain Cell Type Transcriptomes with Applications to Interpretation of Bulk
+#' Tissue Data. \emph{eNeuro}, 4(6), ENEURO.0212-17.2017. https://doi.org/10.1523/ENEURO.0212-17.201
 #'
-#'McKenzie, A.T., Wang, M., Hauberg, M.E. et al. Brain Cell Type Specific Gene Expression and Coexpression Network Architectures.
-#'\emph{Sci Rep} 8, 8868 (2018). https://doi.org/10.1038/s41598-018-27293-5
+#' McKenzie, A.T., Wang, M., Hauberg, M.E. et al. Brain Cell Type Specific Gene Expression and Coexpression Network Architectures.
+#' \emph{Sci Rep} 8, 8868 (2018). https://doi.org/10.1038/s41598-018-27293-5
 #'
-#'#'Wickham et al., (2019). Welcome to the tidyverse.\emph{ Journal of Open Source Software}, 4(43), 1686,
-#'https://doi.org/10.21105/joss.01686
+#' Wickham et al., (2019). Welcome to the tidyverse.\emph{ Journal of Open Source Software}, 4(43), 1686,
+#' https://doi.org/10.21105/joss.01686
 #'
 #' @export
-#' @import stats
+#' @importFrom stats lm anova coef p.adjust as.formula
 #' @import ggplot2
 #' @import ggrepel
 estimates_v_phenotype <-function(estimates, metadata, cell_type_names, covar, pathology_name){
+
+  if(!covar %in% colnames(metadata)) stop("The covar argument must have a corresponding column in metadata.")
+
+  if(!pathology_name %in% colnames(metadata)) stop("The pathology_name argument must have a corresponding column in metadata.")
+
+
   model.data <- merge(estimates, metadata)
   results <- sapply(cell_type_names,function(celltype) {
     sapply(pathology_name, function(pathology) {

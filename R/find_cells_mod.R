@@ -30,18 +30,18 @@
 #'                nMarker = 10,
 #'                method = "SVD",
 #'                scale = TRUE)
-#'find_cells_mod$marker_list
-#'find_cells_mod$SPVS
+#' find_cells_mod$marker_list
+#' find_cells_mod$SPVS
 #'
 #' @references
 #' Mancarci, B. O., Toker, L., Tripathy, S. J., Li, B., Rocco, B., Sibille, E., & Pavlidis, P. (2017).
-#'CrossLaboratory Analysis of Brain Cell Type Transcriptomes with Applications to Interpretation of Bulk
-#'Tissue Data. \emph{eNeuro}, 4(6), ENEURO.0212-17.2017. \href{https://doi.org/10.1523/ENEURO.0212-17.201}
+#' CrossLaboratory Analysis of Brain Cell Type Transcriptomes with Applications to Interpretation of Bulk
+#' Tissue Data. \emph{eNeuro}, 4(6), ENEURO.0212-17.2017. https://doi.org/10.1523/ENEURO.0212-17.201
 #'
 #' Chikina M, Zaslavsky E, Sealfon SC. CellCODE: a robust latent variable approach to differential expression analysis for heterogeneous cell populations. \emph{Bioinformatics}
 #' . 2015;31(10):1584-91.
 #' @export
-#' @import stats
+#' @importFrom stats cor prcomp
 find_cells_mod <- function(inputMat, markers, nMarker, method, scale){
   if(!all(c("markers", "cell") %in% colnames(markers))){
     stop("The markers argument must be a df with a column named marker s(gene symbols) and a column named cell (corresponding cell types).")
