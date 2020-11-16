@@ -44,6 +44,7 @@
 #' @import stats
 #' @import reshape
 #' @import ggplot2
+#' @importFrom magrittr %>%
 calc_and_compare <-function(count_df, mgp_cell_markers, bret_cell_markers){
   mgp_estimations<- markerGeneProfile::mgpEstimate(exprData=count_df,
                                                    genes=mgp_cell_markers,
@@ -57,7 +58,7 @@ calc_and_compare <-function(count_df, mgp_cell_markers, bret_cell_markers){
   rownames(count_df) <- count_df$Gene
   count_df <- count_df[,-1]
   bret_estimations<- BRETIGEA::findCells(count_df, bret_cell_markers, nMarker = 1000, method = "SVD",
-                               scale = TRUE)
+                                         scale = TRUE)
   bret <- bret_estimations %>% as.data.frame() %>% tibble::rownames_to_column(var = 'Sample')
   mgp_final <- mgp
   bret_final <- bret

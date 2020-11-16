@@ -5,7 +5,13 @@
 \title{Calculates and compares the estimations of cell types derived by the
 markerGeneProfile and BRETIGEA findCells method}
 \usage{
-estimates_v_phenotype(estimates, metadata, cell_type_names, covars, pathology)
+estimates_v_phenotype(
+  estimates,
+  metadata,
+  cell_type_names,
+  covar,
+  pathology_name
+)
 }
 \arguments{
 \item{estimates}{The estimates of cell type proportions returned by calc_and_compare()
@@ -18,13 +24,13 @@ pathology.}
 \item{cell_type_names}{The names of all the unique cell types for which
 there are markers in bret_cell_markers: unique(bret_cell_markers$cell)}
 
-\item{pathology}{The pathology associated with the disease in question
-for which the association between it and the cell type indicated by cell is
-being examined.}
-
 \item{covar}{A covariate to be taken into account when running linear models
 to check the association between the cell type indicated by cell and the
-pathology indicated by pathology_names.}
+pathology indicated by pathology_name.}
+
+\item{pathology_name}{The pathology associated with the disease in question
+for which the association between it and the cell type indicated by cell is
+being examined.}
 }
 \value{
 Returns a volcano plot showing the significance of assocations between
@@ -41,14 +47,14 @@ calculated by each
 
 calc_and_compare <- calc_and_compare (
                 count_df = count_df,
-                mgp_cell_markers = mgp_cellmarkers,
+                mgp_cell_markers = mgp_cell_markers,
                 bret_cell_markers = bret_cell_markers)
 
 estimates_v_phenotype <- estimates_v_phenotype(
                 estimates = calc_and_compare$bret,
                 metadata = metadata,
                 cell_type_names = unique(bret_cell_markers$cell),
-                covars = "Covariate",
+                covar = "Covariate",
                 pathology = "DiseasePhenotypeScore")
 
 }

@@ -32,3 +32,4 @@ Suggests:
     rmarkdown,
     testthat
 VignetteBuilder: knitr
+Roxygen: list(markdown = TRUE)

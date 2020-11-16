@@ -14,8 +14,8 @@
 #' there are markers in bret_cell_markers: unique(bret_cell_markers$cell)
 #' @param covar A covariate to be taken into account when running linear models
 #' to check the association between the cell type indicated by cell and the
-#' pathology indicated by pathology_names.
-#' @param pathology The pathology associated with the disease in question
+#' pathology indicated by pathology_name.
+#' @param pathology_name The pathology associated with the disease in question
 #' for which the association between it and the cell type indicated by cell is
 #' being examined.
 #'
@@ -28,14 +28,14 @@
 #'
 #'calc_and_compare <- calc_and_compare (
 #'                 count_df = count_df,
-#'                 mgp_cell_markers = mgp_cellmarkers,
+#'                 mgp_cell_markers = mgp_cell_markers,
 #'                 bret_cell_markers = bret_cell_markers)
 #'
 #' estimates_v_phenotype <- estimates_v_phenotype(
 #'                 estimates = calc_and_compare$bret,
 #'                 metadata = metadata,
 #'                 cell_type_names = unique(bret_cell_markers$cell),
-#'                 covars = "Covariate",
+#'                 covar = "Covariate",
 #'                 pathology = "DiseasePhenotypeScore")
 #'
 #' @references
@@ -53,11 +53,11 @@
 #' @import stats
 #' @import ggplot2
 #' @import ggrepel
-estimates_v_phenotype <-function(estimates, metadata, cell_type_names, covars, pathology){
+estimates_v_phenotype <-function(estimates, metadata, cell_type_names, covar, pathology_name){
   model.data <- merge(estimates, metadata)
   results <- sapply(cell_type_names,function(celltype) {
-    sapply(pathology_names, function(pathology) {
-      form <- as.formula(paste0(pathology,"~",celltype," + ",paste0(covars,collapse=" + ")))
+    sapply(pathology_name, function(pathology) {
+      form <- as.formula(paste0(pathology,"~",celltype," + ",paste0(covar,collapse=" + ")))
       model <- stats::lm(data=model.data,form)
       p <- stats::anova(model)[celltype,5]
       beta <- stats::coef(model)[celltype]

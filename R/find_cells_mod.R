@@ -21,10 +21,12 @@
 #' @examples
 #' # Examples 1:
 #' # Using bret_cell_markers, metadata datasets available with package
-#
+#'
+#' rownames(count_df) <- count_df$Gene
+#' count_df <- count_df[,-1]
 #' find_cells_mod <- find_cells_mod(
-#'                count_df = count_df,
-#'                bret_cell_markers = bret_cell_markers,
+#'                inputMat = count_df,
+#'                markers = bret_cell_markers,
 #'                nMarker = 10,
 #'                method = "SVD",
 #'                scale = TRUE)
@@ -38,7 +40,7 @@
 #'
 #' Chikina M, Zaslavsky E, Sealfon SC. CellCODE: a robust latent variable approach to differential expression analysis for heterogeneous cell populations. \emph{Bioinformatics}
 #' . 2015;31(10):1584-91.
-#'
+#' @export
 #' @import stats
 find_cells_mod <- function(inputMat, markers, nMarker, method, scale){
   if(!all(c("markers", "cell") %in% colnames(markers))){

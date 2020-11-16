@@ -39,8 +39,18 @@ proportion estimates by BRETIGEA.
 # Examples 1:
 # Using bret_cell_markers, metadata datasets available with package
 
+rownames(count_df) <- count_df$Gene
+count_df <- count_df[,-1]
+bretigeaMarkers <- find_cells_mod(
+               inputMat = count_df,
+               markers = bret_cell_markers,
+               nMarker = 10,
+               method = "SVD",
+               scale = TRUE)
+markerMat <- as.data.frame(bretigeaMarkers$SPVS)
+markerMat <- tibble::rownames_to_column(markerMat, var = 'Sample')
 markers_pathology <- markers_pathology(
-                      markerMat = bretigeaMarkers$SPVS \%>\% as.data.frame() \%>\% tibble::rownames_to_column(var = 'Sample'),
+                      markerMat = markerMat,
                       metadata = metadata,
                       covar = "Covariate",
                       pathology_name = "DiseasePhenotypeScore",

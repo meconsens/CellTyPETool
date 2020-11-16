@@ -7,8 +7,8 @@
 \format{
 A dataframe with two columns: markers and cell.
 \describe{
- \item{markers}{Top 1000 marker genes for  astrocyte, endothelial, microglia, neuron, oligodnedrocyte and oligodendrocyte precursor cells.}
- \item{cell}{Indicates which of the cell types ( astrocyte, endothelial, microglia, neuron, oligodnedrocyte and oligodendrocyte precursor cells) the marker gene is a marker for.}
+\item{markers}{Top 1000 marker genes for  astrocyte, endothelial, microglia, neuron, oligodnedrocyte and oligodendrocyte precursor cells.}
+\item{cell}{Indicates which of the cell types ( astrocyte, endothelial, microglia, neuron, oligodnedrocyte and oligodendrocyte precursor cells) the marker gene is a marker for.}
 }
 }
 \source{

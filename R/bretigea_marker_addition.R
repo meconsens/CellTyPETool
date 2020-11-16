@@ -26,8 +26,18 @@
 #' # Examples 1:
 #' # Using bret_cell_markers, metadata datasets available with package
 #'
+#' rownames(count_df) <- count_df$Gene
+#' count_df <- count_df[,-1]
+#' bretigeaMarkers <- find_cells_mod(
+#'                inputMat = count_df,
+#'                markers = bret_cell_markers,
+#'                nMarker = 10,
+#'                method = "SVD",
+#'                scale = TRUE)
+#' markerMat <- as.data.frame(bretigeaMarkers$SPVS)
+#' markerMat <- tibble::rownames_to_column(markerMat, var = 'Sample')
 #' markers_pathology <- markers_pathology(
-#'                       markerMat = bretigeaMarkers$SPVS %>% as.data.frame() %>% tibble::rownames_to_column(var = 'Sample'),
+#'                       markerMat = markerMat,
 #'                       metadata = metadata,
 #'                       covar = "Covariate",
 #'                       pathology_name = "DiseasePhenotypeScore",
@@ -40,7 +50,9 @@
 #'
 #'Wilkinson, G. N. and Rogers, C. E. (1973). Symbolic descriptions of factorial models for analysis of variance. \emph{Applied Statistics}, 22, 392–399. doi: 10.2307/2346786.
 #'
+#'@export
 #'@import stats
+#'@importFrom magrittr %>%
 markers_pathology <-function(markerMat, metadata, covar, pathology_name, cell_type_names){
   markers_meta <- merge(markerMat, metadata, by="Sample")
   model.data <- markers_meta
@@ -123,6 +135,7 @@ markers_pathology <-function(markerMat, metadata, covar, pathology_name, cell_ty
 #' @import utils
 #' @import ggplot2
 #' @import ggrepel
+#' @importFrom magrittr %>%
 
 bretigea_marker_addition <- function(count_df, bret_cell_markers, cell, metadata, covar, pathology_name, cell_type_names, n){
   rownames(count_df) <- count_df$Gene

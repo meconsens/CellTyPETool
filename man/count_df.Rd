@@ -7,8 +7,8 @@
 \format{
 A dataframe with 395 rows of genes and 378 subjects.
 \describe{
- \item{Gene}{List of genes, some of which may be marker genes}
- \item{Subjects}{378 subjects}
+\item{Gene}{List of genes, some of which may be marker genes}
+\item{Subjects}{378 subjects}
 }
 }
 \source{

@@ -34,9 +34,12 @@ A function that runs BRETIGEA findCells() but returns the used markers
 \examples{
 # Examples 1:
 # Using bret_cell_markers, metadata datasets available with package
+
+rownames(count_df) <- count_df$Gene
+count_df <- count_df[,-1]
 find_cells_mod <- find_cells_mod(
-               count_df = count_df,
-               bret_cell_markers = bret_cell_markers,
+               inputMat = count_df,
+               markers = bret_cell_markers,
                nMarker = 10,
                method = "SVD",
                scale = TRUE)

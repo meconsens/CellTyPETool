@@ -19,7 +19,7 @@
 #'
 #' genes_used <- genes_used (
 #'                 count_df = count_df,
-#'                 mgp_cell_markers = mgp_cellmarkers,
+#'                 mgp_cell_markers = mgp_cell_markers,
 #'                 bret_cell_markers = bret_cell_markers)
 #'
 #' @references
@@ -33,6 +33,7 @@
 #'
 #' @export
 #' @import markerGeneProfile
+#' @importFrom magrittr %>%
 genes_used<-function(count_df, mgp_cell_markers, bret_cell_markers){
   mgp_estimations<- markerGeneProfile::mgpEstimate(exprData=count_df,
                                                    genes=mgp_cell_markers,
