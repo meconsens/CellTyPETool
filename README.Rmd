@@ -37,6 +37,7 @@ library("CellTyPETool")
 
 ```r
 ls("package:CellTyPETool")
+data(package = "CellTyPETool")
 ```
 CellTyPETool contains 5 functions.
 
@@ -56,6 +57,11 @@ The **genes_used** function returns the list of marker genes used in the cell ty
 ``` r
 browseVignettes("CellTyPETool")
 ```
+
+An overview of the package is illustrated below. 
+
+![](./inst/extdata/CellTyPEToolOverview.PNG)
+
 
 ## Contributions
 

@@ -35,6 +35,7 @@ library("CellTyPETool")
 
 ``` r
 ls("package:CellTyPETool")
+data(package = "CellTyPETool")
 ```
 
 CellTyPETool contains 5 functions.
@@ -68,6 +69,10 @@ and *BRETIGEA* R packages respectfully.
 ``` r
 browseVignettes("CellTyPETool")
 ```
+
+An overview of the package is illustrated below.
+
+![](./inst/extdata/CellTyPEToolOverview.PNG)
 
 ## Contributions
 
