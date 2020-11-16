@@ -1,0 +1,20 @@
+Package: CellTyPETool
+Type: Package
+Title: Facilitates Deconvolution of Bulk Tissue RNAseq Data for Disease Phenotype Analysis.
+Version: 0.1.0
+Author: Micaela Consens
+Maintainer: The package maintainer <micaela.consens@mail.utoronto.ca>
+Description:
+    Generates cell type proportion estimations from bulk-tissue RNAseq using two different validated methods, markerGeneProfile and BRETIGEA.
+    These estimates can be used for indirect analysis of changes in cell type proportions relating to disease phenotypes, and the package generates visualizations to facilitate this research and better understand the cell-type porportion estimation methods.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    markerGeneProfile,
+    BRETIGEA,
+    reshape2,
+    pheatmap,
+    tidyr,
+    dplyr
+RoxygenNote: 7.1.1
