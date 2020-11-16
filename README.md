@@ -7,17 +7,19 @@
 
 <!-- badges: end -->
 
-\#\#Description The goal of CellTyPETool is to facilitate research that
-requires deconvolution of bulk-tissue RNAseq data. The package can be
-used to generate cell type proportion estimations from bulk-tissue
-RNAseq using two different validated methods, markerGeneProfile and
-BRETIGEA. While other R packages have been published that calculate cell
-type proportions (McKenzie et al, 2018; Mancarci et al., 2017), they
-only offer their own analysis and not a comparison between, nor do they
-offer visualizations between cell-type proportions associations with
-disease or other important phenotypes. Additionally, they don’t offer
-simple way to check which marker genes were encorporated in the
-cell-type proportion calculation.
+\#\#Description
+
+The goal of CellTyPETool is to facilitate research that requires
+deconvolution of bulk-tissue RNAseq data. The package can be used to
+generate cell type proportion estimations from bulk-tissue RNAseq using
+two different validated methods, markerGeneProfile and BRETIGEA. While
+other R packages have been published that calculate cell type
+proportions (McKenzie et al, 2018; Mancarci et al., 2017), they only
+offer their own analysis and not a comparison between, nor do they offer
+visualizations between cell-type proportions associations with disease
+or other important phenotypes. Additionally, they don’t offer simple way
+to check which marker genes were encorporated in the cell-type
+proportion calculation.
 
 \#\#Installation
 
@@ -46,8 +48,10 @@ library(CellTyPETool)
 ## basic example code
 ```
 
-\#\#References H. Wickham. Reshaping data with the reshape package.
-Journal of Statistical Software, 21(12), 2007.
+\#\#References
+
+H. Wickham. Reshaping data with the reshape package. Journal of
+Statistical Software, 21(12), 2007.
 
 Hadley Wickham and Dana Seidel (2020). scales: Scale Functions for
 Visualization. R package version 1.1.1.
