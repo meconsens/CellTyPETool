@@ -48,10 +48,13 @@ find_cells_mod$SPVS
 
 }
 \references{
+#' Chikina M, Zaslavsky E, Sealfon SC. CellCODE: a robust latent variable approach to differential expression analysis for heterogeneous cell populations. \emph{Bioinformatics}
+. 2015;31(10):1584-91.
+
 Mancarci, B. O., Toker, L., Tripathy, S. J., Li, B., Rocco, B., Sibille, E., & Pavlidis, P. (2017).
 CrossLaboratory Analysis of Brain Cell Type Transcriptomes with Applications to Interpretation of Bulk
 Tissue Data. \emph{eNeuro}, 4(6), ENEURO.0212-17.2017. https://doi.org/10.1523/ENEURO.0212-17.201
 
-Chikina M, Zaslavsky E, Sealfon SC. CellCODE: a robust latent variable approach to differential expression analysis for heterogeneous cell populations. \emph{Bioinformatics}
-. 2015;31(10):1584-91.
+R Core Team (2020). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria.
+URL https://www.R-project.org/.
 }

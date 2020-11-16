@@ -62,5 +62,8 @@ Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) \emph{The New S Language}
 
 Chambers, J. M. and Hastie, T. J. (1992) \emph{Statistical Models in S}, Wadsworth & Brooks/Cole.
 
+R Core Team (2020). R: A language and environment for statistical computing.
+R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
+
 Wilkinson, G. N. and Rogers, C. E. (1973). Symbolic descriptions of factorial models for analysis of variance. \emph{Applied Statistics}, 22, 392–399. doi: 10.2307/2346786.
 }

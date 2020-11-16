@@ -40,4 +40,7 @@ Tissue Data. \emph{eNeuro}, 4(6), ENEURO.0212-17.2017.https://doi.org/10.1523/EN
 
 McKenzie, A.T., Wang, M., Hauberg, M.E. et al. Brain Cell Type Specific Gene Expression and Coexpression Network Architectures.
 \emph{Sci Rep} 8, 8868 (2018). https://doi.org/10.1038/s41598-018-27293-5
+
+Stefan Milton Bache and Hadley Wickham (2014). magrittr: A Forward-Pipe Operator
+for R. R package version 1.5. https://CRAN.R-project.org/package=magrittr
 }

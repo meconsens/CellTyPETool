@@ -48,6 +48,9 @@
 #'
 #' Chambers, J. M. and Hastie, T. J. (1992) \emph{Statistical Models in S}, Wadsworth & Brooks/Cole.
 #'
+#' R Core Team (2020). R: A language and environment for statistical computing.
+#' R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
+#'
 #' Wilkinson, G. N. and Rogers, C. E. (1973). Symbolic descriptions of factorial models for analysis of variance. \emph{Applied Statistics}, 22, 392–399. doi: 10.2307/2346786.
 #'
 #' @export
@@ -119,9 +122,18 @@ markers_pathology <-function(markerMat, metadata, covar, pathology_name, cell_ty
 #'                           n= 10)
 #'
 #' @references
+#' Hadley Wickham and Dana Seidel (2020). scales: Scale Functions for Visualization.
+#' R package version 1.1.1. https://CRAN.R-project.org/package=scales
+#'
+#' Kirill Müller and Hadley Wickham (2020). tibble: Simple Data Frames. R package
+#' version 3.0.3. https://CRAN.R-project.org/package=tibble
+#'
 #' Mancarci, B. O., Toker, L., Tripathy, S. J., Li, B., Rocco, B., Sibille, E., & Pavlidis, P. (2017).
 #' CrossLaboratory Analysis of Brain Cell Type Transcriptomes with Applications to Interpretation of Bulk
 #' Tissue Data. \emph{eNeuro}, 4(6), ENEURO.0212-17.2017. https://doi.org/10.1523/ENEURO.0212-17.201
+#'
+#' R Core Team (2020). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL
+#' https://www.R-project.org/.
 #'
 #' Stefan Milton Bache and Hadley Wickham (2014). magrittr: A Forward-Pipe Operator for R.
 #' \emph{R package version 1.5}.https://CRAN.R-project.org/package=magrittr
