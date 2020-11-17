@@ -39,6 +39,16 @@ library("CellTyPETool")
 ls("package:CellTyPETool")
 data(package = "CellTyPETool")
 ```
+CellTyPETool has 4 datasets.
+
+The **bretCellMarkers** dataset a dataframe with two columns: markers and cell. The markers column contains marker genes for brain cell types astrocyte, endothelial, microglia, neuron, oligodnedrocyte and oligodendrocyte precursor. This is the marker gene list from the *BRETIGEA* R package. The cell column indicates which of the cell types ( astrocyte, endothelial, microglia, neuron, oligodnedrocyte and oligodendrocyte precursor cells) the marker gene is a marker for. The dataset is formatted to be run by the *BRETIGEA* **findCells** method or the CellTyPETool **findCellsMod** function. 
+
+The **mgpCellMarkers** dataset is a nested list with 6 sub-lists of marker genes for brain cell types astrocyte, endothelial, microglia, neuron, oligodnedrocyte and oligodendrocyte precursor cells.This is the marker gene list from the *BRETIGEA* R package that has been reformatted to be run by the *markerGeneProfile* **markerGeneProfile** method. 
+
+The **countDf** dataset is a dataframe with 395 rows of genes and 378 subjects taken from the *BRETIGEA* R package. 
+
+The **metadata** dataset is a dataframe with 345 subjects also in countDf and 3 rows indicating the subjects id (Sample), some covariate (covariate) and disease state score (DiseasePhenotypeScore). Sample is the subjects id which corresponds to countDf, Covariate is some confounding factor that must be accounted for when finding signals between cell-type proportions and a disease phenotype (could be batch etc.), DiseasePhenotypeScore is some indication of disease state, could be a score of combined AD pathology variables (CERAD score, Braak pathology stage etc.). 
+
 CellTyPETool contains 5 functions.
 
 The **bretigeaMarkerAddition** function makes use of a modified **findCells** function from *BRETIGEA* R package to a graph of the significance of the cell type proportion
