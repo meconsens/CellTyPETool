@@ -41,7 +41,7 @@ data(package = "CellTyPETool")
 ```
 CellTyPETool has 4 datasets.
 
-The **bretCellMarkers** dataset a dataframe with two columns: markers and cell. The markers column contains marker genes for brain cell types astrocyte, endothelial, microglia, neuron, oligodnedrocyte and oligodendrocyte precursor. This is the marker gene list from the *BRETIGEA* R package. The cell column indicates which of the cell types ( astrocyte, endothelial, microglia, neuron, oligodnedrocyte and oligodendrocyte precursor cells) the marker gene is a marker for. The dataset is formatted to be run by the *BRETIGEA* **findCells** method or the CellTyPETool **findCellsMod** function. 
+The **bretCellMarkers** dataset is a dataframe with two columns: markers and cell. The markers column contains marker genes for brain cell types astrocyte, endothelial, microglia, neuron, oligodnedrocyte and oligodendrocyte precursor. This is the marker gene list from the *BRETIGEA* R package. The cell column indicates which of the cell types ( astrocyte, endothelial, microglia, neuron, oligodnedrocyte and oligodendrocyte precursor cells) the marker gene is a marker for. The dataset is formatted to be run by the *BRETIGEA* **findCells** method or the CellTyPETool **findCellsMod** function. 
 
 The **mgpCellMarkers** dataset is a nested list with 6 sub-lists of marker genes for brain cell types astrocyte, endothelial, microglia, neuron, oligodnedrocyte and oligodendrocyte precursor cells.This is the marker gene list from the *BRETIGEA* R package that has been reformatted to be run by the *markerGeneProfile* **markerGeneProfile** method. 
 

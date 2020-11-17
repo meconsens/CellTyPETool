@@ -40,7 +40,7 @@ data(package = "CellTyPETool")
 
 CellTyPETool has 4 datasets.
 
-The **bretCellMarkers** dataset a dataframe with two columns: markers
+The **bretCellMarkers** dataset is a dataframe with two columns: markers
 and cell. The markers column contains marker genes for brain cell types
 astrocyte, endothelial, microglia, neuron, oligodnedrocyte and
 oligodendrocyte precursor. This is the marker gene list from the
