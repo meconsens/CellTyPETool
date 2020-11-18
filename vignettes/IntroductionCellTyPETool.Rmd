@@ -31,11 +31,6 @@ require("devtools")
 devtools::install_github("meconsens/CellTyPETool", build_vignettes = TRUE)
 library("CellTyPETool")
 ```
-To list all functions available in the package:
-``` r
-lsf.str("package:CellTyPETool")
-```
-
 <br>
 
 

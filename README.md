@@ -34,7 +34,6 @@ library("CellTyPETool")
 ## Overview
 
 ``` r
-ls("package:CellTyPETool")
 data(package = "CellTyPETool")
 ```
 
