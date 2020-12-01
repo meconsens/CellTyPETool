@@ -67,6 +67,7 @@ calcAndCompare <-function(countDf, mgpCellMarkers, bretCellMarkers){
     stop("The bretCellMarkers argument must be a df with a column named markers(gene symbols) and a column named cell (corresponding cell types).")
   }
 
+  #run the marker gene cell type proportion estimate with default values from markerGeneProfile package
   mgpEstimations<- markerGeneProfile::mgpEstimate(exprData=countDf,
                                                   genes=mgpCellMarkers,
                                                   geneColName="Gene",
@@ -75,12 +76,16 @@ calcAndCompare <-function(countDf, mgpCellMarkers, bretCellMarkers){
                                                   groups=NULL, #if there are experimental groups provide them here. if not desired set to NULL
                                                   seekConsensus = FALSE, # ensures gene rotations are positive in both of the groups
                                                   removeMinority = TRUE)
+  #convert cell type proportion estimates to dataframe with individuals listed under "sample" col
   mgp <-mgpEstimations$estimates %>% as.data.frame() %>% tibble::rownames_to_column(var = 'Sample')
+  #prep countDf so its formatted to run the BRETIGEA findCells() method
   rownames(countDf) <- countDf$Gene
   countDf <- countDf[,-1]
   bretEstimations<- BRETIGEA::findCells(countDf, bretCellMarkers, nMarker = 1000, method = "SVD",
                                         scale = TRUE)
+  #convert cell type proportion estimates to dataframe with individuals listed under "sample" col
   bret <- bretEstimations %>% as.data.frame() %>% tibble::rownames_to_column(var = 'Sample')
+  #name each estimation of cell type by the method that was used to define it
   mgpFinal <- mgp
   bretFinal <- bret
   colnames(mgp) <- paste("MGP", colnames(mgp), sep = "_")
@@ -94,7 +99,9 @@ calcAndCompare <-function(countDf, mgpCellMarkers, bretCellMarkers){
       Sample = BRET_Sample,
     )
   compareEstimates <- merge(mgp, bret, by="Sample")
+  #exclude sample column for heatmap comparison
   compareEstimates <- compareEstimates[,-1]
+  #created correlation plot between cell type proportion estimates
   markerMat <- data.matrix(compareEstimates, rownames.force = NA)
   cormat <- round(stats::cor(markerMat),2)
   meltedCormat <- reshape::melt(cormat)

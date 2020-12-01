@@ -69,7 +69,7 @@ estimatesVPath <-function(estimates, metadata, cellTypeNames, covar, pathologyNa
 
   if(!pathologyName %in% colnames(metadata)) stop("The pathologyName argument must have a corresponding column in metadata.")
 
-
+  #calculate direction of effect and significance of association between cell type and pathology, as well as number of observations
   model.data <- merge(estimates, metadata)
   results <- sapply(cellTypeNames,function(celltype) {
     sapply(pathologyName, function(pathology) {
@@ -85,15 +85,17 @@ estimatesVPath <-function(estimates, metadata, cellTypeNames, covar, pathologyNa
 
   results <- as.data.frame(matrix(results,ncol=5,byrow = T),stringsAsFactors = F)
   names(results) <- c("celltype","pathology","beta","p","n")
-
+  #correctly assign types (i.e. p value is a numeric value)
   results <- within(results,{
     p <- as.numeric(p)
     beta <- as.numeric(beta)
     n <- as.numeric(n)})
 
+  #correct p value fior multiple tests
   results$bonfp <- stats::p.adjust(results$p, method="bonferroni")
   results$fdr <- stats:: p.adjust(results$p, method="fdr")
 
+  #generate volcano plot
   volcanoPlot <- ggplot2::ggplot(data=results,ggplot2::aes(y=-log10(fdr),x=beta,col=celltype))+
     ggplot2::geom_hline(yintercept = -log10(0.05),col="blue",lty=3)+
     ggrepel::geom_text_repel(data=subset(results,p<0.05),ggplot2::aes(label=celltype))+

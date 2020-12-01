@@ -44,7 +44,7 @@ genesUsed<-function(countDf, mgpCellMarkers, bretCellMarkers){
   if(!all(c("markers", "cell") %in% colnames(bretCellMarkers))){
     stop("The bretCellMarkers argument must be a df with a column named markers(gene symbols) and a column named cell (corresponding cell types).")
   }
-
+  #run the marker gene cell type proportion estimate with default values from markerGeneProfile package
   mgpEstimations<- markerGeneProfile::mgpEstimate(exprData=countDf,
                                                   genes=mgpCellMarkers,
                                                   geneColName="Gene",
@@ -54,6 +54,7 @@ genesUsed<-function(countDf, mgpCellMarkers, bretCellMarkers){
                                                   seekConsensus = FALSE, # ensures gene rotations are positive in both of the groups
                                                   removeMinority = TRUE)
   i= 0
+  #get the marker genes used for each cell type calculation
   for(cell in names(mgpCellMarkers)){
     i = i + 1
     cellsDf <- mgpEstimations$usedMarkerExpression[i] %>% as.data.frame()
@@ -65,8 +66,10 @@ genesUsed<-function(countDf, mgpCellMarkers, bretCellMarkers){
       masterlist <- rbind(masterlist, list)
     }
   }
+  #update countDf to work for BRETIGEA
   rownames(countDf) <- countDf$Gene
   countDf <- countDf[,-1]
+  #run modified BRETIGEA findCells() function to return the used markers
   bretEstimations<- findCellsMod(countDf, bretCellMarkers, nMarker = 1000, method = "SVD",
                                  scale = TRUE)
   colnames(bretEstimations$markerList) <- c("MarkersUsed", "Cell")

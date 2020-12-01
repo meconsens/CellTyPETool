@@ -64,6 +64,7 @@ markersPathology <-function(markerMat, metadata, covar, pathologyName, cellTypeN
 
   markersMeta <- merge(markerMat, metadata, by="Sample")
   model.data <- markersMeta
+  #get the direction of effect and significance of association between cell type and pathology, as well as number of observations
   results <- sapply(cellTypeNames,function(celltype) {
     sapply(pathologyName, function(pathology) {
       form <- as.formula(paste0(celltype,"~",pathology," + ",paste0(covar,collapse=" + ")))
@@ -167,15 +168,19 @@ bretigeaMarkerAddition <- function(countDf, bretCellMarkers, cellName, metadata,
     n<- 1000 # correct the input for user
   }
 
+  #prep countDf for use by BRETIGEA
   rownames(countDf) <- countDf$Gene
   countDf <- countDf[,-1]
   for (i in 1: n)
   {
+    #run the modified BRETIGEA method for calculating cell type proportion estimates, but get the markers used back
     bretigeaMarkers <- findCellsMod(countDf, bretCellMarkers, nMarker = i, method = "SVD",scale = TRUE)
     bretigeaMarkers$SPVS <- bretigeaMarkers$SPVS %>% as.data.frame() %>% tibble::rownames_to_column(var = 'Sample')
+    #get direction of effect significance of association between cell type and pathology, as well as number of observations
     results <- markersPathology(bretigeaMarkers$SPVS, metadata, covar, pathologyName, cellTypeNames)
     results <- as.data.frame(matrix(results,ncol=5,byrow=T),stringsAsFactors = F)
     names(results) <- c("celltype","pathology","beta","p","n")
+    #correctly assign types of results
     results <- within(results,{
       p <- as.numeric(p)
       beta <- as.numeric(beta)
@@ -189,11 +194,14 @@ bretigeaMarkerAddition <- function(countDf, bretCellMarkers, cellName, metadata,
       results_final <- results
     }
   }
+  #get the information from linear model about specific cell type
   cellPathology <- results_final %>% dplyr::filter(celltype == cellName)
   cellPathology <- cellPathology %>% tidyr::gather(key, value, pathology)
+  #get cell type marker gene names
   cellLabel<- bretigeaMarkers$markerList%>% dplyr::filter(cell == cellName)
   cellLabel <- utils::head(cellLabel,n)
   cellPathology$markers <- cellLabel$markers
+  #make the line plot, labelling marker added at each observation
   graph <- cellPathology %>%
     ggplot2::ggplot(ggplot2::aes(x=nMarker, y=-log10(p), color=value)) + ggplot2::theme_minimal() + ggrepel::geom_text_repel(aes(label=markers), size =2)+ ggplot2::geom_line(aes(color = value), size =1) + ggplot2::scale_x_continuous(breaks = scales::pretty_breaks(n = 10)) +
     ggplot2::theme(axis.text.x = ggplot2::element_text(
