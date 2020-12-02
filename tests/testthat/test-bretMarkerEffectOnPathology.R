@@ -5,7 +5,7 @@ test_that("Returns list object of ggplot type", {
   data("metadata")
   data("bretCellMarkers")
 
-  bretigeaMarkerAddition <- bretigeaMarkerAddition(
+  bretMarkerEffectOnPathology <- bretMarkerEffectOnPathology(
     countDf = countDf,
     bretCellMarkers = bretCellMarkers,
     cellName = "mic",
@@ -15,8 +15,8 @@ test_that("Returns list object of ggplot type", {
     cellTypeNames = unique(bretCellMarkers$cell),
     n= 10)
 
-  expect_type(bretigeaMarkerAddition, "list")
-  expect_s3_class(bretigeaMarkerAddition, c("gg", "ggplot"))
+  expect_type(bretMarkerEffectOnPathology, "list")
+  expect_s3_class(bretMarkerEffectOnPathology, c("gg", "ggplot"))
 })
 
 test_that("Scale labels are correct",{
@@ -24,7 +24,7 @@ test_that("Scale labels are correct",{
   data("metadata")
   data("bretCellMarkers")
 
-  bretigeaMarkerAddition <- bretigeaMarkerAddition(
+  bretMarkerEffectOnPathology <- bretMarkerEffectOnPathology(
     countDf = countDf,
     bretCellMarkers = bretCellMarkers,
     cellName = "mic",
@@ -33,12 +33,12 @@ test_that("Scale labels are correct",{
     pathologyName = "DiseasePhenotypeScore",
     cellTypeNames = unique(bretCellMarkers$cell),
     n= 10)
-  expect_identical(bretigeaMarkerAddition$labels$y, "-log10(p)")
-  expect_identical(bretigeaMarkerAddition$labels$x, "nMarker")
+  expect_identical(bretMarkerEffectOnPathology$labels$y, "-log10(p)")
+  expect_identical(bretMarkerEffectOnPathology$labels$x, "nMarker")
 })
 
-context("Checking for invalid user input for bretigeaMarkerAddition")
-test_that("bretigeaMarkerAddition error upon invalid user input", {
+context("Checking for invalid user input for bretMarkerEffectOnPathology")
+test_that("bretMarkerEffectOnPathology error upon invalid user input", {
 
   data("countDf")
   data("metadata")
@@ -53,7 +53,7 @@ test_that("bretigeaMarkerAddition error upon invalid user input", {
   n= 10
 
   # cellName not in cellTypeNames
-  expect_error(bretigeaMarkerAddition <- bretigeaMarkerAddition(
+  expect_error(bretMarkerEffectOnPathology <- bretMarkerEffectOnPathology(
     countDf = countDf,
     bretCellMarkers = bretCellMarkers,
     cellName = "X",
@@ -64,7 +64,7 @@ test_that("bretigeaMarkerAddition error upon invalid user input", {
     n= 10))
 
   # covar not in metadata
-  expect_error(bretigeaMarkerAddition <- bretigeaMarkerAddition(
+  expect_error(bretMarkerEffectOnPathology <- bretMarkerEffectOnPathology(
     countDf = countDf,
     bretCellMarkers = bretCellMarkers,
     cellName = cellName,

@@ -36,7 +36,7 @@ library("CellTyPETool")
 
 ## Usage
 
-The **bretigeaMarkerAddition** function makes use of a modified **findCells** function from *BRETIGEA* R package to a graph of the significance of the cell type proportion
+The **bretMarkerEffectOnPathology** function makes use of a modified **findCells** function from *BRETIGEA* R package to a graph of the significance of the cell type proportion
 specified's association to the pathology indicated upon marker addition from 0 to n.
 
 The **markersPathology** function runs a linear model on the cell-type proportion estimates by *BRETIGEA* R package **findCells** function. 
@@ -55,7 +55,7 @@ The **genesUsed** function returns the list of marker genes used in the cell typ
   data("metadata")
   data("bretCellMarkers")
 
-  bretigeaMarkerAddition <- CellTyPETool::bretigeaMarkerAddition(
+  bretMarkerEffectOnPathologyResults <- CellTyPETool::bretMarkerEffectOnPathology(
     countDf = countDf,
     bretCellMarkers = bretCellMarkers,
     cellName = "mic",
@@ -65,32 +65,32 @@ The **genesUsed** function returns the list of marker genes used in the cell typ
     cellTypeNames = unique(bretCellMarkers$cell),
     n= 10)
     
-  bretigeaMarkerAddition  
+  bretMarkerEffectOnPathologyResults  
     
-  calcAndCompare <- CellTyPETool::calcAndCompare (
+  calcAndCompareResults <- CellTyPETool::calcAndCompare (
     countDf = countDf,
     mgpCellMarkers = mgpCellMarkers,
     bretCellMarkers = bretCellMarkers)
   
-  calcAndCompare$corrPlot
+  calcAndCompareResults$corrPlot
   
-  estimatesVPathBret <- CellTyPETool::estimatesVPath(
+  estimatesVPathBretResults <- CellTyPETool::estimatesVPath(
     estimates = calcAndCompare$bret,
     metadata = metadata,
     cellTypeNames = unique(bretCellMarkers$cell),
     covar = "Covariate",
     pathologyName = "DiseasePhenotypeScore")
     
-  estimatesVPathBret
+  estimatesVPathBretResults
     
-  estimatesVPathMGP <- CellTyPETool::estimatesVPath(
+  estimatesVPathMGPResults <- CellTyPETool::estimatesVPath(
     estimates = calcAndCompare$mgp,
     metadata = metadata,
     cellTypeNames = unique(bretCellMarkers$cell),
     covar = "Covariate",
     pathologyName = "DiseasePhenotypeScore")
   
-   genesUsed <- CellTyPETool::genesUsed(
+   genesUsedResults <- CellTyPETool::genesUsed(
     countDf = countDf,
     mgpCellMarkers = mgpCellMarkers,
     bretCellMarkers = bretCellMarkers)
@@ -98,7 +98,7 @@ The **genesUsed** function returns the list of marker genes used in the cell typ
 <br>
 
 This will output various plots 
-<div style="text-align:center"><img src="bretigeaMarkerAddition.PNG" alt="LinePlot_16Nov2020" width="450"/>
+<div style="text-align:center"><img src="bretMarkerEffectOnPathology.PNG" alt="LinePlot_16Nov2020" width="450"/>
 <div style="text-align:left">
 
 <div style="text-align:center"><img src="corrPlot.PNG" alt="CorrPlot_16Nov2020" width="450"/>

@@ -3,17 +3,17 @@
 #' A function that runs BRETIGEA findCells() but returns the used markers
 #'
 #' @param inputMat Numeric gene expression data frame or matrix, with
-#' rownames corresponding to gene names, some of which are marker genes,
-#' and columns corresponding to samples.
+#'     rownames corresponding to gene names, some of which are marker genes,
+#'     and columns corresponding to samples.
 #' @param markers Data frame with marker genes in one column (named "marker")
-#' and the cell type that that gene symbol corresponds to in another column
-#' (named "cell").
+#'     and the cell type that that gene symbol corresponds to in another column
+#'     (named "cell").
 #' @param nMarker The number of marker genes (that are present in your expression
-#'  data set) to use in estimating the surrogate cell type proportion variable
-#'  for each cell type.
+#'      data set) to use in estimating the surrogate cell type proportion variable
+#'      for each cell type.
 #' @param method 	To estimate the cell type proportions, can either use PCA or SVD.
 #' @param scale Whether or not to scale the gene expression data from each
-#' marker gene prior to using it as an input for dimension reduction.
+#'     marker gene prior to using it as an input for dimension reduction.
 #'
 #' @return Returns a list of sample-by-cell type matrix of estimated cell
 #' type proportion variables and the markers used
@@ -21,17 +21,17 @@
 #' @examples
 #' # Examples 1:
 #' # Using bretCellMarkers, metadata datasets available with package
-#'
-#' rownames(countDf) <- countDf$Gene
-#' countDf <- countDf[,-1]
-#' findCellsMod <- findCellsMod(
-#'                inputMat = countDf,
+#' countDfBret <- countDf
+#' rownames(countDfBret) <- countDfBret$Gene
+#' countDfBret <- countDfBret[,-1]
+#' findCellsModResults <- findCellsMod(
+#'                inputMat = countDfBret,
 #'                markers = bretCellMarkers,
 #'                nMarker = 10,
 #'                method = "SVD",
 #'                scale = TRUE)
-#' findCellsMod$markerList
-#' findCellsMod$SPVS
+#' findCellsModResults$markerList
+#' findCellsModResults$SPVS
 #'
 #' @references
 #' #' Chikina M, Zaslavsky E, Sealfon SC. CellCODE: a robust latent variable approach to differential expression analysis for heterogeneous cell populations. \emph{Bioinformatics}
@@ -112,7 +112,8 @@ findCellsMod <- function(inputMat, markers, nMarker, method, scale){
   colnames(SPVs) = cell_types
   rownames(SPVs) = colnames(inputMat)
 
-  #modified here by me to return markerList
+  #modified here by me to return markerList, SPVs are the cell type proportion estimations
   markersandcells <- list("markerList" = markers_df, "SPVS" = SPVs)
   return(markersandcells)
 }
+#[END]

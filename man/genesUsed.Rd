@@ -28,7 +28,7 @@ and the BRETIGEA method
 # Examples 1:
 # Using countDf, bretCellMarkers, mgpCellMarkers datasets available with package
 
-genesUsed <- genesUsed (
+genesUsedResults <- genesUsed (
                 countDf = countDf,
                 mgpCellMarkers = mgpCellMarkers,
                 bretCellMarkers = bretCellMarkers)

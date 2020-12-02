@@ -35,6 +35,7 @@ library("CellTyPETool")
 
 ``` r
 data(package = "CellTyPETool")
+ls("package:CellTyPETool")
 ```
 
 CellTyPETool has 4 datasets.
@@ -70,7 +71,7 @@ pathology stage etc.).
 
 CellTyPETool contains 5 functions.
 
-The **bretigeaMarkerAddition** function makes use of a modified
+The **bretMarkerEffectOnPathology** function makes use of a modified
 **findCells** function from *BRETIGEA* R package to a graph of the
 significance of the cell type proportion specified’s association to the
 pathology indicated upon marker addition from 0 to n.
@@ -108,13 +109,13 @@ An overview of the package is illustrated below.
 
 The author of the package is Micaela Consens.
 
-The **bretigeaMarkerAddition** function makes use of a modified
+The **bretMarkerEffectOnPathology** function makes use of a modified
 **findCells** function from *BRETIGEA* R package to a graph of the
 significance of the cell type proportion specified’s association to the
 pathology indicated upon marker addition from 0 to n. The
-**bretigeaMarkerAddition** function uses the *tidyr*, *dplyr*, *tibble*,
-*scales*, *stats*, *utils*, *ggplot2*, *ggrepel*, and *magrittr*
-packages.
+**bretMarkerEffectOnPathology** function uses the *tidyr*, *dplyr*,
+*tibble*, *scales*, *stats*, *utils*, *ggplot2*, *ggrepel*, and
+*magrittr* packages.
 
 The **markersPathology** function runs a linear model on the cell-type
 proportion estimates by BRETIGEA. The **markersPathology** function uses

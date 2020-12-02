@@ -37,13 +37,13 @@ each cell type proportion derived and the pathology in question
 # Examples 1:
 # Using countDf, bretCellMarkers, mgpCellMarkers datasets available with package
 
-calcAndCompare <- calcAndCompare (
+calcAndCompareResults <- calcAndCompare (
                 countDf = countDf,
                 mgpCellMarkers = mgpCellMarkers,
                 bretCellMarkers = bretCellMarkers)
 
-estimatesVPath <- estimatesVPath(
-                estimates = calcAndCompare$bret,
+estimatesVPathResults <- estimatesVPath(
+                estimates = calcAndCompareResults$bret,
                 metadata = metadata,
                 cellTypeNames = unique(bretCellMarkers$cell),
                 covar = "Covariate",

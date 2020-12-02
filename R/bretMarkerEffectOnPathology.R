@@ -4,21 +4,21 @@
 #' proportion estimates by BRETIGEA.
 #'
 #' @param markerMat The $SPVS of the return of findCellsMod once converted to a
-#' dataframe with the first column being Sample corresponding to the metadata
-#' Sample id. (Dataframe with Sample column and then estimate of cell type
-#' proportion calculated by BRETIGEA findCells for each cell type in
-#' cellTypeNames)
+#'    dataframe with the first column being Sample corresponding to the metadata
+#'    Sample id. (Dataframe with Sample column and then estimate of cell type
+#'    proportion calculated by BRETIGEA findCells for each cell type in
+#'    cellTypeNames)
 #' @param metadata A dataframe with subjects also in countDf and rows
-#' indicating the subjects id, some covariate, and disease state score or
-#' pathology.
+#'    indicating the subjects id, some covariate, and disease state score or
+#'    pathology.
 #' @param covar A covariate to be taken into account when running linear models
-#' to check the association between the cell type indicated by cell and the
-#' pathology indicated by pathologyNames.
+#'     to check the association between the cell type indicated by cell and the
+#'     pathology indicated by pathologyNames.
 #' @param pathologyName The pathology associated with the disease in question
-#' for which the association between it and the cell type indicated by cell is
-#' being examined.
+#'     for which the association between it and the cell type indicated by cell is
+#'     being examined.
 #' @param cellTypeNames The names of all the unique cell types for which
-#' there are markers in bretCellMarkers: unique(bretCellMarkers$cell)
+#'     there are markers in bretCellMarkers: unique(bretCellMarkers$cell)
 #'
 #' @return Returns a matrix array ready to be formatted by bretigeaMarkersAddition
 #'
@@ -36,7 +36,7 @@
 #'                scale = TRUE)
 #' markerMat <- as.data.frame(bretigeaMarkers$SPVS)
 #' markerMat <- tibble::rownames_to_column(markerMat, var = 'Sample')
-#' markersPathology <- markersPathology(
+#' markersPathologyResults <- markersPathology(
 #'                       markerMat = markerMat,
 #'                       metadata = metadata,
 #'                       covar = "Covariate",
@@ -86,23 +86,23 @@ markersPathology <-function(markerMat, metadata, covar, pathologyName, cellTypeN
 #'
 #' @param countDf A dataframe with Gene rows and Subject columns.
 #' @param bretCellMarkers A dataframe with two columns, markers and cell where
-#'  markers are genes for cell types and cell indicates the cell type markers
-#'  are the gene for.
+#'      markers are genes for cell types and cell indicates the cell type markers
+#'      are the gene for.
 #' @param cellName A string indicating which of the cells in the cell type marker list
-#' is being specified to look at.
+#'     is being specified to look at.
 #' @param covar A covariate to be taken into account when running linear models
-#' to check the association between the cell type indicated by cell and the
-#' pathology indicated by pathologyNames.
+#'     to check the association between the cell type indicated by cell and the
+#'     pathology indicated by pathologyNames.
 #' @param metadata A dataframe with subjects also in countDf and rows
-#' indicating the subjects id, some covariate, and disease state score or
-#' pathology.
+#'     indicating the subjects id, some covariate, and disease state score or
+#'     pathology.
 #' @param pathologyName The pathology associated with the disease in question
-#' for which the association between it and the cell type indicated by cell is
-#' being examined.
+#'     for which the association between it and the cell type indicated by cell is
+#'     being examined.
 #' @param n Specifies how many times BRETIGEA will run BRETIGEA using top 1,
-#' top 1 & 2, top 1,2,3 ... to top 1...n markers
+#'     top 1 & 2, top 1,2,3 ... to top 1...n markers
 #' @param cellTypeNames The names of all the unique cell types for which
-#' there are markers in bretCellMarkers: unique(bretCellMarkers$cell)
+#'     there are markers in bretCellMarkers: unique(bretCellMarkers$cell)
 #'
 #' @return Returns a graph of the significance of the cell type proportion
 #' specified's association to the pathology indicated upon marker addition
@@ -112,7 +112,7 @@ markersPathology <-function(markerMat, metadata, covar, pathologyName, cellTypeN
 #' # Examples 1:
 #' # Using countDf, bretCellMarkers, metadata datasets available with package
 #'
-#' bretigeaMarkerAddition <- bretigeaMarkerAddition (
+#' bretMarkerEffectOnPathologyResults <- bretMarkerEffectOnPathology (
 #'                           countDf = countDf,
 #'                           bretCellMarkers = bretCellMarkers,
 #'                           cellName = "mic",
@@ -153,7 +153,7 @@ markersPathology <-function(markerMat, metadata, covar, pathologyName, cellTypeN
 #' @import ggrepel
 #' @importFrom magrittr %>%
 
-bretigeaMarkerAddition <- function(countDf, bretCellMarkers, cellName, metadata, covar, pathologyName, cellTypeNames, n){
+bretMarkerEffectOnPathology <- function(countDf, bretCellMarkers, cellName, metadata, covar, pathologyName, cellTypeNames, n){
   if(!all(c("markers", "cell") %in% colnames(bretCellMarkers))){
     stop("The bretCellMarkers argument must be a df with a column named marker s(gene symbols) and a column named cell (corresponding cell types).")
   }
@@ -213,3 +213,4 @@ bretigeaMarkerAddition <- function(countDf, bretCellMarkers, cellName, metadata,
   return(graph)
 }
 
+#[END]

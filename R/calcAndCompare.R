@@ -7,10 +7,10 @@
 #'
 #' @param countDf A dataframe with Gene rows and Subject columns.
 #' @param bretCellMarkers A dataframe with two columns, markers and cell where
-#'  markers are genes for cell types and cell indicates the cell type markers
-#'  are the gene for.
+#'     markers are genes for cell types and cell indicates the cell type markers
+#'      are the gene for.
 #' @param mgpCellMarkers A nested A nested list with as many sub-lists of
-#' marker genes as there are for cell types
+#'     marker genes as there are for cell types
 #'
 #' @return Returns a nested list with cell type proportions calculated by the
 #' markerGeneProfile method and the BRETIGEA method and a correlation plot to
@@ -20,7 +20,7 @@
 #' # Examples 1:
 #' # Using countDf, bretCellMarkers, mgpCellMarkers datasets available with package
 #'
-#' calcAndCompare <- calcAndCompare (
+#' calcAndCompareResults <- calcAndCompare (
 #'                 countDf = countDf,
 #'                 mgpCellMarkers = mgpCellMarkers,
 #'                 bretCellMarkers = bretCellMarkers)
@@ -79,9 +79,10 @@ calcAndCompare <-function(countDf, mgpCellMarkers, bretCellMarkers){
   #convert cell type proportion estimates to dataframe with individuals listed under "sample" col
   mgp <-mgpEstimations$estimates %>% as.data.frame() %>% tibble::rownames_to_column(var = 'Sample')
   #prep countDf so its formatted to run the BRETIGEA findCells() method
-  rownames(countDf) <- countDf$Gene
-  countDf <- countDf[,-1]
-  bretEstimations<- BRETIGEA::findCells(countDf, bretCellMarkers, nMarker = 1000, method = "SVD",
+  countDfBret <- countDf
+  rownames(countDfBret) <- countDfBret$Gene
+  countDfBret <- countDfBret[,-1]
+  bretEstimations<- BRETIGEA::findCells(countDfBret, bretCellMarkers, nMarker = 1000, method = "SVD",
                                         scale = TRUE)
   #convert cell type proportion estimates to dataframe with individuals listed under "sample" col
   bret <- bretEstimations %>% as.data.frame() %>% tibble::rownames_to_column(var = 'Sample')
@@ -107,9 +108,9 @@ calcAndCompare <-function(countDf, mgpCellMarkers, bretCellMarkers){
   meltedCormat <- reshape::melt(cormat)
   names(meltedCormat)[3] <- "correlation"
   corrPlot <- ggplot2::ggplot(data = meltedCormat, ggplot2::aes(x=X1, y=X2, fill=correlation)) +
-    ggplot2::geom_tile() + ggplot2::theme(axis.title.y=element_blank(),
-                                          axis.title.x=element_blank(),
+    ggplot2::geom_tile() + ggplot2::ggtitle("Correlation Between Cell Type Proportion Estimates \n Calculated by BRETIGEA and markerGeneProfile methods") + ggplot2::theme(plot.title=element_text(size=14, face="bold.italic"), axis.title.x = element_blank(), axis.title.y = element_blank(),
                                           axis.text.x = element_text(angle = 45, hjust = 1)) + ggplot2::geom_text(data=meltedCormat,aes(x=X1, y=X2,label=correlation)) +  ggplot2::scale_fill_gradient2(low="darkblue", high="darkgreen", guide="colorbar")
 
   return(list("mgp" = mgpFinal, "bret" = bretFinal, "corrPlot"= corrPlot))
 }
+#[END]

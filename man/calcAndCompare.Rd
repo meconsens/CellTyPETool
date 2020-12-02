@@ -31,7 +31,7 @@ calculated by each
 # Examples 1:
 # Using countDf, bretCellMarkers, mgpCellMarkers datasets available with package
 
-calcAndCompare <- calcAndCompare (
+calcAndCompareResults <- calcAndCompare (
                 countDf = countDf,
                 mgpCellMarkers = mgpCellMarkers,
                 bretCellMarkers = bretCellMarkers)

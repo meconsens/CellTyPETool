@@ -4,18 +4,18 @@
 #' each cell type proportion derived and the pathology in question
 #'
 #' @param estimates The estimates of cell type proportions returned by calcAndCompare()
-#' either markerGeneProfile derived or BRETIGEA derived
+#'     either markerGeneProfile derived or BRETIGEA derived
 #' @param metadata A dataframe with subjects also in countDf and rows
-#' indicating the subjects id, some covariate, and disease state score or
-#' pathology.
+#'     indicating the subjects id, some covariate, and disease state score or
+#'     pathology.
 #' @param cellTypeNames The names of all the unique cell types for which
-#' there are markers in bretCellMarkers: unique(bretCellMarkers$cell)
+#'     there are markers in bretCellMarkers: unique(bretCellMarkers$cell)
 #' @param covar A covariate to be taken into account when running linear models
-#' to check the association between the cell type indicated by cell and the
-#' pathology indicated by pathologyName.
+#'     to check the association between the cell type indicated by cell and the
+#'     pathology indicated by pathologyName.
 #' @param pathologyName The pathology associated with the disease in question
-#' for which the association between it and the cell type indicated by cell is
-#' being examined.
+#'     for which the association between it and the cell type indicated by cell is
+#'     being examined.
 #'
 #' @return Returns a volcano plot showing the significance of associations between
 #' each cell type proportion derived and the pathology in question
@@ -24,13 +24,13 @@
 #' # Examples 1:
 #' # Using countDf, bretCellMarkers, mgpCellMarkers datasets available with package
 #'
-#'calcAndCompare <- calcAndCompare (
+#'calcAndCompareResults <- calcAndCompare (
 #'                 countDf = countDf,
 #'                 mgpCellMarkers = mgpCellMarkers,
 #'                 bretCellMarkers = bretCellMarkers)
 #'
-#' estimatesVPath <- estimatesVPath(
-#'                 estimates = calcAndCompare$bret,
+#' estimatesVPathResults <- estimatesVPath(
+#'                 estimates = calcAndCompareResults$bret,
 #'                 metadata = metadata,
 #'                 cellTypeNames = unique(bretCellMarkers$cell),
 #'                 covar = "Covariate",
@@ -104,3 +104,4 @@ estimatesVPath <-function(estimates, metadata, cellTypeNames, covar, pathologyNa
   return(volcanoPlot)
 
 }
+#[END]

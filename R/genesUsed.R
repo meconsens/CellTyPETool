@@ -5,19 +5,19 @@
 #'
 #' @param countDf A dataframe with Gene rows and Subject columns.
 #' @param bretCellMarkers A dataframe with two columns, markers and cell where
-#'  markers are genes for cell types and cell indicates the cell type markers
-#'  are the gene for.
+#'      markers are genes for cell types and cell indicates the cell type markers
+#'      are the gene for.
 #' @param mgpCellMarkers A nested A nested list with as many sub-lists of
-#' marker genes as there are for cell types
+#'     marker genes as there are for cell types
 #'
 #' @return Returns a nested list with mgpMarkers and bretMarkers which are each
-#' lists of markers used for each method
+#'     lists of markers used for each method
 #'
 #' @examples
 #' # Examples 1:
 #' # Using countDf, bretCellMarkers, mgpCellMarkers datasets available with package
 #'
-#' genesUsed <- genesUsed (
+#' genesUsedResults <- genesUsed (
 #'                 countDf = countDf,
 #'                 mgpCellMarkers = mgpCellMarkers,
 #'                 bretCellMarkers = bretCellMarkers)
@@ -67,11 +67,13 @@ genesUsed<-function(countDf, mgpCellMarkers, bretCellMarkers){
     }
   }
   #update countDf to work for BRETIGEA
-  rownames(countDf) <- countDf$Gene
-  countDf <- countDf[,-1]
+  countDfBret <- countDf
+  rownames(countDfBret) <- countDfBret$Gene
+  countDfBret <- countDfBret[,-1]
   #run modified BRETIGEA findCells() function to return the used markers
-  bretEstimations<- findCellsMod(countDf, bretCellMarkers, nMarker = 1000, method = "SVD",
+  bretEstimations<- findCellsMod(countDfBret, bretCellMarkers, nMarker = 1000, method = "SVD",
                                  scale = TRUE)
   colnames(bretEstimations$markerList) <- c("MarkersUsed", "Cell")
   return(list("mgpMarkers"= masterlist, "bretMarkers"= bretEstimations$markerList))
 }
+#[END]
