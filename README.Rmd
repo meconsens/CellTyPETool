@@ -49,7 +49,7 @@ The **countDf** dataset is a dataframe with 395 rows of genes and 378 subjects t
 
 The **metadata** dataset is a dataframe with 345 subjects also in countDf and 3 rows indicating the subjects id (Sample), some covariate (covariate) and disease state score (DiseasePhenotypeScore). Sample is the subjects id which corresponds to countDf, Covariate is some confounding factor that must be accounted for when finding signals between cell-type proportions and a disease phenotype (could be batch etc.), DiseasePhenotypeScore is some indication of disease state, could be a score of combined AD pathology variables (CERAD score, Braak pathology stage etc.). 
 
-CellTyPETool contains 5 functions.
+CellTyPETool contains 6 functions.
 
 The **bretMarkerEffectOnPathology** function makes use of a modified **findCells** function from *BRETIGEA* R package to a graph of the significance of the cell type proportion
 specified's association to the pathology indicated upon marker addition from 0 to n.

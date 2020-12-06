@@ -69,7 +69,7 @@ etc.), DiseasePhenotypeScore is some indication of disease state, could
 be a score of combined AD pathology variables (CERAD score, Braak
 pathology stage etc.).
 
-CellTyPETool contains 5 functions.
+CellTyPETool contains 6 functions.
 
 The **bretMarkerEffectOnPathology** function makes use of a modified
 **findCells** function from *BRETIGEA* R package to a graph of the

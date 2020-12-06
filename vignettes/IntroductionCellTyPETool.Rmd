@@ -96,6 +96,8 @@ The **mgpQCMetrics** function returns a dataframe of the genes used, the removed
     countDf = countDf,
     mgpCellMarkers = mgpCellMarkers,
     bretCellMarkers = bretCellMarkers)
+    
+    mgpQCMetricsResults <- mgpQCMetrics(countDf, mgpCellMarkers)
 ```
 <br>
 
