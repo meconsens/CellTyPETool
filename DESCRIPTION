@@ -11,6 +11,7 @@ License: GPL-3 + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Remotes: github::PavlidisLab/markerGeneProfile
+Date: 2020-12-08
 Imports: 
     markerGeneProfile,
     BRETIGEA,
@@ -34,3 +35,4 @@ Suggests:
     testthat
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
+URL: https://github.com/meconsens/CellTyPETool

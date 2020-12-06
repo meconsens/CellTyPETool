@@ -49,6 +49,8 @@ The **estimatesVPath** function generates a volcano plot showing the significanc
 
 The **genesUsed** function returns the list of marker genes used in the cell type proportions calculations of two validated methods, **markerGeneProfile** and **findCells**, from the *markerGeneProfile* and *BRETIGEA* R packages respectfully. 
 
+The **mgpQCMetrics** function returns a dataframe of the genes used, the removedMarkerRatios and the proportion of variance explained by the first PC in the markerGeneProfile estimation method. This provides a way to evaluate the accuracy of the markerGeneProfile method for cell type estimations from the *markerGeneProfile* R package.
+
 
 ```r 
   data("countDf")

@@ -97,6 +97,12 @@ cell type proportions calculations of two validated methods,
 **markerGeneProfile** and **findCells**, from the *markerGeneProfile*
 and *BRETIGEA* R packages respectfully.
 
+The **mgpQCMetrics** function returns a dataframe of the genes used, the
+removedMarkerRatios and the proportion of variance explained by the
+first PC in the markerGeneProfile estimation method. This provides a way
+to evaluate the accuracy of the markerGeneProfile method for cell type
+estimations from the *markerGeneProfile* R package.
+
 ``` r
 browseVignettes("CellTyPETool")
 ```
@@ -155,6 +161,16 @@ and *BRETIGEA* R packages respectfully. (Part of the code for
 clearly indicated and referenced in the **genesUsed** help file). The
 **genesUsed** function uses the *markerGeneProfile*, and *magrittr*
 package.
+
+The **mgpQCMetrics** function returns various QC metrics that are
+relevant to the *markerGeneProfile* R package method of calculating cell
+type proportions. The *mgpEstimate* method is taken from the
+*markerGeneProfile* method, but the code to extract the necessary
+features of the method to evaluate the accuracy/effectivenes of the
+cell-type proportion estimates is novel. The dataframe returned by this
+function details a list of genesUsed, the the removedMarkerRatios and
+the proportion of variance explained by the first PC in the
+*markerGeneProfile* R package estimation method.
 
 ## References
 
